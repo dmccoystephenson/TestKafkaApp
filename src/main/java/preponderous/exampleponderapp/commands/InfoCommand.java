@@ -11,7 +11,7 @@ import java.util.Arrays;
  */
 public class InfoCommand extends ApplicationCommand {
     public InfoCommand() {
-        super(new ArrayList<>(Arrays.asList("info")), new ArrayList<>(Arrays.asList("epa.info")));
+        super(new ArrayList<>(Arrays.asList("info")), new ArrayList<>(Arrays.asList("tka.info")));
     }
 
     @Override

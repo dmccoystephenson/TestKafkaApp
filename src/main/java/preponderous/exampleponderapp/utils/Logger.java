@@ -1,6 +1,6 @@
 package preponderous.exampleponderapp.utils;
 
-import preponderous.exampleponderapp.ExamplePonderApplication;
+import preponderous.exampleponderapp.TestKafkaApp;
 
 /**
  * @author Daniel Stephenson
@@ -24,7 +24,7 @@ public class Logger {
      * @param message The message to log to the console.
      */
     public void log(String message) {
-        if (ExamplePonderApplication.getInstance().isDebugEnabled()) {
+        if (TestKafkaApp.getInstance().isDebugEnabled()) {
             System.out.println("[DEBUG] " + message);
         }
     }

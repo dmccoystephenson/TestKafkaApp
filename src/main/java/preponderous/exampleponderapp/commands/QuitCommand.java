@@ -12,7 +12,7 @@ import java.util.Arrays;
 public class QuitCommand extends ApplicationCommand {
 
     public QuitCommand() {
-        super(new ArrayList<>(Arrays.asList("quit")), new ArrayList<>(Arrays.asList("epa.quit")));
+        super(new ArrayList<>(Arrays.asList("quit")), new ArrayList<>(Arrays.asList("tka.quit")));
     }
 
     @Override

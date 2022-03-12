@@ -13,7 +13,7 @@ import java.util.Arrays;
 public class HelpCommand extends ApplicationCommand {
 
     public HelpCommand() {
-        super(new ArrayList<>(Arrays.asList("help")), new ArrayList<>(Arrays.asList("epa.help")));
+        super(new ArrayList<>(Arrays.asList("help")), new ArrayList<>(Arrays.asList("tka.help")));
     }
 
     @Override

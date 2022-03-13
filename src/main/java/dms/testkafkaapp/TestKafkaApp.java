@@ -1,10 +1,5 @@
-package preponderous.exampleponderapp;
+package dms.testkafkaapp;
 
-import preponderous.exampleponderapp.commands.HelpCommand;
-import preponderous.exampleponderapp.commands.InfoCommand;
-import preponderous.exampleponderapp.commands.QuitCommand;
-import preponderous.exampleponderapp.misc.CommandSenderImpl;
-import preponderous.exampleponderapp.utils.Logger;
 import preponderous.ponder.system.abs.ApplicationCommand;
 import preponderous.ponder.system.abs.CommandSender;
 import preponderous.ponder.system.abs.PonderApplication;
@@ -12,6 +7,12 @@ import preponderous.ponder.system.services.CommandService;
 
 import java.util.HashSet;
 import java.util.Scanner;
+
+import dms.testkafkaapp.commands.HelpCommand;
+import dms.testkafkaapp.commands.InfoCommand;
+import dms.testkafkaapp.commands.QuitCommand;
+import dms.testkafkaapp.misc.CommandSenderImpl;
+import dms.testkafkaapp.utils.Logger;
 
 /**
  * @author Daniel Stephenson
@@ -54,7 +55,7 @@ public class TestKafkaApp extends PonderApplication {
         String label;
         String[] args;
 
-        user.sendMessage("Welcome to an example ponder application. Type help to see a list of useful commands.");
+        user.sendMessage("Welcome to an Test Kafka App. Type help to see a list of useful commands.");
         while (isRunning()) {
             line = getInput();
             if (line == null) {

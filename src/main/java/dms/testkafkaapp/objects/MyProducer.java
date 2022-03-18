@@ -4,10 +4,6 @@ import java.util.Properties;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 
-import dms.testkafkaapp.Constants;
-import dms.testkafkaapp.utils.EVGetter;
-import dms.testkafkaapp.utils.Logger;
-
 public class MyProducer<A, B> {
     KafkaProducer<A, B> producer;
 

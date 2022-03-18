@@ -26,7 +26,7 @@ public class TestCommand extends ApplicationCommand {
     public boolean execute(CommandSender sender) {
         Logger.getInstance().print("Using topic: " + Constants.TOPIC_NAME);
         MyProducer<String, String> producer = new MyProducer<String, String>();
-        sendMessage(producer, Constants.TOPIC_NAME);
+        sendTestMessage(producer, Constants.TOPIC_NAME);
         producer.getProducer().close();
         return true;
     }
@@ -36,7 +36,7 @@ public class TestCommand extends ApplicationCommand {
         return execute(sender);
     }
 
-    private void sendMessage(MyProducer<String, String> producer, String topicName) {
+    private void sendTestMessage(MyProducer<String, String> producer, String topicName) {
         Logger.getInstance().print("Attempting to send message.");
         ProducerRecord<String, String> record = new ProducerRecord<String, String>(topicName, "testkey", "testvalue");
         Logger.getInstance().debug("Created ProducerRecord: " + record.toString());

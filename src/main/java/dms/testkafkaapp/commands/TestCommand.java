@@ -47,13 +47,13 @@ public class TestCommand extends ApplicationCommand {
     }
 
     private void sendMessage(Producer<String, String> producer, String topicName) {
-        Logger.getInstance().info("Attempting to send message.");
+        Logger.getInstance().print("Attempting to send message.");
         ProducerRecord<String, String> record = new ProducerRecord<String, String>(topicName, "testkey", "testvalue");
         Logger.getInstance().debug("Created ProducerRecord: " + record.toString());
         Future<RecordMetadata> futureRecordMetadata = producer.send(record);
         try {
             futureRecordMetadata.get();
-            Logger.getInstance().info("Message sent successfully.");
+            Logger.getInstance().print("Message sent successfully.");
         } catch(Exception e) {
             Logger.getInstance().error("Something went wrong when attempting to send a message.");
         }

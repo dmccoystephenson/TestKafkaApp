@@ -9,6 +9,9 @@ import org.apache.kafka.clients.producer.RecordMetadata;
 
 import dms.testkafkaapp.utils.Logger;
 
+/**
+ * @author Daniel McCoy Stephenson
+ */
 public class MyProducer<A, B> {
     KafkaProducer<A, B> producer;
 

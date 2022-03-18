@@ -2,10 +2,6 @@ package dms.testkafkaapp.commands;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.concurrent.Future;
-
-import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.clients.producer.RecordMetadata;
 
 import dms.testkafkaapp.Constants;
 import dms.testkafkaapp.factories.MyProducerFactory;
@@ -15,7 +11,7 @@ import preponderous.ponder.system.abs.ApplicationCommand;
 import preponderous.ponder.system.abs.CommandSender;
 
 /**
- * @resource https://www.tutorialspoint.com/apache_kafka/apache_kafka_quick_guide.htm
+ * @author Daniel McCoy Stephenson
  */
 public class TestCommand extends ApplicationCommand {
     

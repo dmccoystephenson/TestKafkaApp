@@ -16,7 +16,7 @@ import dms.testkafkaapp.misc.CommandSenderImpl;
 import dms.testkafkaapp.utils.Logger;
 
 /**
- * @author Daniel Stephenson
+ * @author Daniel McCoy Stephenson
  */
 public class TestKafkaApp extends PonderApplication {
     private static TestKafkaApp instance;

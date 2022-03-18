@@ -3,7 +3,7 @@ package dms.testkafkaapp.misc;
 import preponderous.ponder.system.abs.CommandSender;
 
 /**
- * @author Daniel Stephenson
+ * @author Daniel McCoy Stephenson
  */
 public class CommandSenderImpl extends CommandSender {
 

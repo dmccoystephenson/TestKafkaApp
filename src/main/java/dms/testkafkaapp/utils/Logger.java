@@ -3,7 +3,7 @@ package dms.testkafkaapp.utils;
 import dms.testkafkaapp.TestKafkaApp;
 
 /**
- * @author Daniel Stephenson
+ * @author Daniel McCoy Stephenson
  */
 public class Logger {
     private static Logger instance;

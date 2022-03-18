@@ -1,5 +1,8 @@
 package dms.testkafkaapp.utils;
 
+/**
+ * @author Daniel McCoy Stephenson
+ */
 public class EVGetter {
     
     public static String getEnvironmentVariable(String variableName) {

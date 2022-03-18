@@ -8,6 +8,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
 
 import dms.testkafkaapp.Constants;
+import dms.testkafkaapp.factories.MyProducerFactory;
 import dms.testkafkaapp.objects.MyProducer;
 import dms.testkafkaapp.utils.Logger;
 import preponderous.ponder.system.abs.ApplicationCommand;
@@ -25,7 +26,7 @@ public class TestCommand extends ApplicationCommand {
     @Override
     public boolean execute(CommandSender sender) {
         Logger.getInstance().print("Using topic: " + Constants.TOPIC_NAME);
-        MyProducer<String, String> producer = new MyProducer<String, String>();
+        MyProducer<String, String> producer = MyProducerFactory.getInstance().createProducer();
         sendTestMessage(producer, Constants.TOPIC_NAME);
         producer.getProducer().close();
         return true;

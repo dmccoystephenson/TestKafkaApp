@@ -7,6 +7,9 @@ import dms.testkafkaapp.objects.MyProducer;
 import dms.testkafkaapp.utils.EVGetter;
 import dms.testkafkaapp.utils.Logger;
 
+/**
+ * @author Daniel McCoy Stephenson
+ */
 public class MyProducerFactory {
     private static MyProducerFactory instance;
     

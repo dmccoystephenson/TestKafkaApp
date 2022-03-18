@@ -11,6 +11,7 @@ import java.util.Scanner;
 import dms.testkafkaapp.commands.HelpCommand;
 import dms.testkafkaapp.commands.InfoCommand;
 import dms.testkafkaapp.commands.QuitCommand;
+import dms.testkafkaapp.commands.TestCommand;
 import dms.testkafkaapp.misc.CommandSenderImpl;
 import dms.testkafkaapp.utils.Logger;
 
@@ -20,7 +21,7 @@ import dms.testkafkaapp.utils.Logger;
 public class TestKafkaApp extends PonderApplication {
     private static TestKafkaApp instance;
 
-    private boolean debug = false;
+    private boolean debug = true;
     private boolean running = true;
 
     private CommandService commandService;
@@ -48,7 +49,7 @@ public class TestKafkaApp extends PonderApplication {
      * @return Whether the program exited successfully.
      */
     public boolean run(CommandSender user) {
-        Logger.getInstance().log("Running application.");
+        Logger.getInstance().debug("Running application.");
 
         // declare variables to be used in loop
         String line;
@@ -78,7 +79,7 @@ public class TestKafkaApp extends PonderApplication {
             // handle command
             boolean success = onCommand(user, label, args);
             if (!success) {
-                Logger.getInstance().log("Something went wrong processing the " + label + " command.");
+                Logger.getInstance().debug("Something went wrong processing the " + label + " command.");
             }
         }
         return true;
@@ -102,7 +103,7 @@ public class TestKafkaApp extends PonderApplication {
     @Override
     public void onStartup() {
         instance = this;
-        Logger.getInstance().log("Initiating startup.");
+        Logger.getInstance().debug("Initiating startup.");
         initializeCommandService();
     }
 
@@ -111,7 +112,7 @@ public class TestKafkaApp extends PonderApplication {
      */
     @Override
     public void onShutdown() {
-        Logger.getInstance().log("Initiating shutdown.");
+        Logger.getInstance().debug("Initiating shutdown.");
     }
 
     /**
@@ -123,7 +124,7 @@ public class TestKafkaApp extends PonderApplication {
      */
     @Override
     public boolean onCommand(CommandSender sender, String label, String[] args) {
-        Logger.getInstance().log("Interpreting command " + label);
+        Logger.getInstance().debug("Interpreting command " + label);
         return getCommandService().interpretAndExecuteCommand(sender, label, args);
     }
 
@@ -167,6 +168,7 @@ public class TestKafkaApp extends PonderApplication {
         commands.add(new HelpCommand());
         commands.add(new InfoCommand());
         commands.add(new QuitCommand());
+        commands.add(new TestCommand());
         setCommandService(new CommandService((commands)));
     }
 

@@ -19,6 +19,7 @@ public class HelpCommand extends ApplicationCommand {
     public boolean execute(CommandSender sender) {
         sender.sendMessage("=== Test Kafka App Commands ===");
         sender.sendMessage("help - View a list of useful commands.");
+        sender.sendMessage("test - Run a test.");
         sender.sendMessage("info - View information about the application.");
         sender.sendMessage("quit - Quit the application.");
         return true;

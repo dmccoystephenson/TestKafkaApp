@@ -24,7 +24,7 @@
                 <configuration>  
                     <archive>  
                         <manifest>  
-                            <mainClass>preponderous.exampleponderapp.TestKafkaApp</mainClass>  
+                            <mainClass>dms.testkafkaapp.TestKafkaApp</mainClass>  
                         </manifest>  
                     </archive>  
                 </configuration>  
@@ -62,6 +62,25 @@
             <version>1.0</version>
             <scope>compile</scope>
         </dependency>
-    </dependencies>
 
+        <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients -->
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka_2.11</artifactId>
+            <version>2.4.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.36</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.36</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 </project>

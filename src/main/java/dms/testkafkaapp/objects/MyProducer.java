@@ -12,22 +12,22 @@ import dms.testkafkaapp.utils.Logger;
 /**
  * @author Daniel McCoy Stephenson
  */
-public class MyProducer<A, B> {
-    KafkaProducer<A, B> producer;
+public class MyProducer {
+    KafkaProducer<String, String> producer;
 
     public MyProducer(Properties properties) {
-        producer = new KafkaProducer<A, B>(properties);
+        producer = new KafkaProducer<>(properties);
     }
 
-    public KafkaProducer<A, B> getProducer() {
+    public KafkaProducer<String, String> getProducer() {
         return producer;
     }
 
     public boolean sendMessage(String topicName, String value) {
         Logger.getInstance().print("Attempting to send message with value: " + value);
         ProducerRecord<String, String> record = new ProducerRecord<String, String>(topicName, "testkey", value);
-        Logger.getInstance().debug("Created ProducerRecord: " + record.toString());
-        Future<RecordMetadata> futureRecordMetadata = producer.send((ProducerRecord<A, B>) record);
+        Logger.getInstance().debug("Created ProducerRecord: " + record);
+        Future<RecordMetadata> futureRecordMetadata = producer.send(record);
         try {
             futureRecordMetadata.get();
             return true;

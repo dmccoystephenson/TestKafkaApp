@@ -24,14 +24,14 @@ public class MyProducerFactory {
         return instance;
     }
 
-    public MyProducer<String, String> createProducer() {
+    public MyProducer createProducer() {
         Properties properties = getDefaultProperties();
         return createProducer(properties);
     }
 
-    public MyProducer<String, String> createProducer(Properties properties) {
+    public MyProducer createProducer(Properties properties) {
         Logger.getInstance().info("Creating producer...");
-        return new MyProducer<String, String>(properties);
+        return new MyProducer(properties);
     }
 
     private Properties getDefaultProperties() {

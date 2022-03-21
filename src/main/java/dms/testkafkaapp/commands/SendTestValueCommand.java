@@ -13,16 +13,16 @@ import preponderous.ponder.system.abs.CommandSender;
 /**
  * @author Daniel McCoy Stephenson
  */
-public class TestCommand extends ApplicationCommand {
+public class SendTestValueCommand extends ApplicationCommand {
     
-    public TestCommand() {
-        super(new ArrayList<>(Arrays.asList("test")), new ArrayList<>(Arrays.asList("tka.test")));
+    public SendTestValueCommand() {
+        super(new ArrayList<>(Arrays.asList("sendtestvalue")), new ArrayList<>(Arrays.asList("tka.sendtestvalue")));
     }
 
     @Override
     public boolean execute(CommandSender sender) {
         Logger.getInstance().print("Using topic: " + Constants.TOPIC_NAME);
-        MyProducer<String, String> producer = MyProducerFactory.getInstance().createProducer();
+        MyProducer producer = MyProducerFactory.getInstance().createProducer();
         sendTestMessage(producer, Constants.TOPIC_NAME);
         producer.getProducer().close();
         return true;
@@ -33,7 +33,7 @@ public class TestCommand extends ApplicationCommand {
         return execute(sender);
     }
 
-    private void sendTestMessage(MyProducer<String, String> producer, String topicName) {
+    private boolean sendTestMessage(MyProducer producer, String topicName) {
         String value = "testvalue";
         boolean success = producer.sendMessage(topicName, value);
         if (success) {
@@ -42,5 +42,6 @@ public class TestCommand extends ApplicationCommand {
         else {
             Logger.getInstance().error("Something went wrong when attempting to send a message.");
         }
+        return success;
     }
 }

@@ -21,7 +21,7 @@ import dms.testkafkaapp.utils.Logger;
 public class TestKafkaApp extends PonderApplication {
     private static TestKafkaApp instance;
 
-    private boolean debug = true;
+    private boolean debug = false;
     private boolean running = true;
 
     private CommandService commandService;

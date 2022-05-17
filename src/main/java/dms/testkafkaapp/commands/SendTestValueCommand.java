@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 import dms.testkafkaapp.Constants;
 import dms.testkafkaapp.exceptions.KafkaClusterNotFoundException;
+import dms.testkafkaapp.exceptions.KafkaHostNotDefinedException;
 import dms.testkafkaapp.factories.MyProducerFactory;
 import dms.testkafkaapp.objects.MyProducer;
 import dms.testkafkaapp.utils.Logger;
@@ -26,9 +27,13 @@ public class SendTestValueCommand extends ApplicationCommand {
         MyProducer producer;
         try {
             producer = MyProducerFactory.getInstance().createProducer();
+        } catch (KafkaHostNotDefinedException e) {
+            Logger.getInstance().error("The KAFKA_HOST environment variable was not set.");
+            sender.sendMessage("You need to set the KAFKA_HOST environment variable to the IP of the host running your kafka cluster.");
+            return false;
         } catch (KafkaClusterNotFoundException e) {
-            Logger.getInstance().error("A kafka cluster was not found to be running and was expected to be.");
-            sender.sendMessage("A kafka cluster needs to be running in order for this command to work.");
+            Logger.getInstance().error("A kafka cluster was not found and was expected to be.");
+            sender.sendMessage("You need to have a kafka cluster running in order for this command to work.");
             return false;
         }
         sendTestMessage(producer, Constants.TOPIC_NAME);

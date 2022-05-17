@@ -13,7 +13,7 @@ import dms.testkafkaapp.utils.Logger;
  * @author Daniel McCoy Stephenson
  */
 public class MyProducer {
-    KafkaProducer<String, String> producer;
+    private KafkaProducer<String, String> producer;
 
     public MyProducer(Properties properties) {
         producer = new KafkaProducer<>(properties);

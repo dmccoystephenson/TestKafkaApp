@@ -26,7 +26,7 @@ public class MyProducerFactory {
         return instance;
     }
 
-    public MyProducer createProducer() throws KafkaClusterNotFoundException {
+    public MyProducer createProducer() throws KafkaClusterNotFoundException, KafkaHostNotDefinedException {
         Properties properties = getDefaultProperties();
         return createProducer(properties);
     }
@@ -41,15 +41,10 @@ public class MyProducerFactory {
         }
     }
 
-    private Properties getDefaultProperties() {
+    private Properties getDefaultProperties() throws KafkaHostNotDefinedException {
         Logger.getInstance().info("Creating properties...");
         Properties props = new Properties(); // create instance for properties to access producer configs
-        try {
-            props.put("bootstrap.servers", EVGetter.getKafkaHost() + ":9092");
-        } catch (KafkaHostNotDefinedException e) {
-            Logger.getInstance().info("Kafka Host wasn't defined. Assuming localhost.");
-            props.put("bootstrap.servers", "localhost");
-        }
+        props.put("bootstrap.servers", EVGetter.getKafkaHost() + ":9092");
         props.put("acks", "all"); // set acknowledgements for producer requests.
         props.put("retries", 0); // if the request fails, the producer can automatically retry
         props.put("batch.size", 16384); // specify buffer size in config

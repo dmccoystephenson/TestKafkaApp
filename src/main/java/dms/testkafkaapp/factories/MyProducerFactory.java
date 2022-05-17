@@ -26,7 +26,7 @@ public class MyProducerFactory {
         return instance;
     }
 
-    public MyProducer createProducer() throws KafkaClusterNotFoundException, KafkaHostNotDefinedException {
+    public MyProducer createProducer() throws KafkaHostNotDefinedException, KafkaClusterNotFoundException {
         Properties properties = getDefaultProperties();
         return createProducer(properties);
     }

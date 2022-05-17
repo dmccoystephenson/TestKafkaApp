@@ -3,6 +3,7 @@ package dms.testkafkaapp.factories;
 import java.util.Properties;
 
 import dms.testkafkaapp.Constants;
+import dms.testkafkaapp.exceptions.KafkaNotFoundException;
 import dms.testkafkaapp.objects.MyProducer;
 import dms.testkafkaapp.utils.EVGetter;
 import dms.testkafkaapp.utils.Logger;
@@ -24,14 +25,19 @@ public class MyProducerFactory {
         return instance;
     }
 
-    public MyProducer createProducer() {
+    public MyProducer createProducer() throws KafkaNotFoundException {
         Properties properties = getDefaultProperties();
         return createProducer(properties);
     }
 
-    public MyProducer createProducer(Properties properties) {
+    public MyProducer createProducer(Properties properties) throws KafkaNotFoundException {
         Logger.getInstance().info("Creating producer...");
-        return new MyProducer(properties);
+        try {
+            return new MyProducer(properties);
+        }
+        catch(Exception e) {
+            throw new KafkaNotFoundException();
+        }
     }
 
     private Properties getDefaultProperties() {

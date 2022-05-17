@@ -56,7 +56,7 @@ public class TestKafkaApp extends PonderApplication {
         String label;
         String[] args;
 
-        user.sendMessage("Welcome to an Test Kafka App. Type help to see a list of useful commands.");
+        user.sendMessage("Welcome to a Test Kafka App. Type help to see a list of useful commands.");
         while (isRunning()) {
             line = getInput();
             if (line == null) {

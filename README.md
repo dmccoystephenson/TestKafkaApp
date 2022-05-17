@@ -1,2 +1,2 @@
-# TestKafkaApp
-This is an example of an application created with Ponder.
+# Test Kafka App
+This is a test kafka app for experimentation purposes.

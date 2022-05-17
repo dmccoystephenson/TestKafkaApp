@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import dms.testkafkaapp.Constants;
-import dms.testkafkaapp.exceptions.KafkaNotFoundException;
+import dms.testkafkaapp.exceptions.KafkaClusterNotFoundException;
 import dms.testkafkaapp.factories.MyProducerFactory;
 import dms.testkafkaapp.objects.MyProducer;
 import dms.testkafkaapp.utils.Logger;
@@ -26,7 +26,7 @@ public class SendTestValueCommand extends ApplicationCommand {
         MyProducer producer;
         try {
             producer = MyProducerFactory.getInstance().createProducer();
-        } catch (KafkaNotFoundException e) {
+        } catch (KafkaClusterNotFoundException e) {
             Logger.getInstance().error("A kafka cluster was not found to be running and was expected to be.");
             sender.sendMessage("A kafka cluster needs to be running in order for this command to work.");
             return false;

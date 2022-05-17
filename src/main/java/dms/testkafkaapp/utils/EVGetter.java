@@ -1,5 +1,7 @@
 package dms.testkafkaapp.utils;
 
+import dms.testkafkaapp.exceptions.KafkaHostNotDefinedException;
+
 /**
  * @author Daniel McCoy Stephenson
  */
@@ -11,6 +13,14 @@ public class EVGetter {
            System.out.println("Something went wrong retrieving the environment variable " + variableName);
         }
         return value;
+     }
+
+     public static String getKafkaHost() throws KafkaHostNotDefinedException {
+        String kafkaHost = getEnvironmentVariable("KAFKA_HOST");
+        if (kafkaHost == null || kafkaHost.equals("")) {
+           throw new KafkaHostNotDefinedException();
+        }
+        return kafkaHost;
      }
     
 }

@@ -1,5 +1,6 @@
 package dms.testkafkaapp;
 
+import preponderous.ponder.misc.ArgumentParser;
 import preponderous.ponder.system.abs.ApplicationCommand;
 import preponderous.ponder.system.abs.CommandSender;
 import preponderous.ponder.system.abs.PonderApplication;
@@ -126,7 +127,12 @@ public class TestKafkaApp extends PonderApplication {
     @Override
     public boolean onCommand(CommandSender sender, String label, String[] args) {
         Logger.getInstance().debug("Interpreting command " + label);
-        return getCommandService().interpretAndExecuteCommand(sender, label, args);
+
+        // drop first argument
+        ArgumentParser argumentParser = new ArgumentParser();
+        args = argumentParser.dropFirstArgument(args);
+
+        return getCommandService().interpretAndExecuteCommand(sender, label, args); // TODO: make command service drop first argument
     }
 
     /**

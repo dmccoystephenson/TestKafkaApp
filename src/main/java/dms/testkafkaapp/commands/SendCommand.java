@@ -33,6 +33,7 @@ public class SendCommand extends ApplicationCommand {
         }
         String topic = args[0];
         String message= args[1];
+
         MyProducer producer;
         try {
             producer = MyProducerFactory.getInstance().createProducer();

@@ -34,13 +34,13 @@ public class MyProducer {
             futureRecordMetadata.get();
             return true;
         } catch(CancellationException e) {
-            Logger.getInstance().error("A cancellation exception has occurred.");
+            Logger.getInstance().error("A cancellation exception has occurred: " + e.getMessage());
             return false;
         } catch(ExecutionException e) {
-            Logger.getInstance().error("An execution exception has occurred.");
+            Logger.getInstance().error("An execution exception has occurred: " + e.getMessage());
             return false;
         } catch(InterruptedException e) {
-            Logger.getInstance().error("An interrupted exception has occurred.");
+            Logger.getInstance().error("An interrupted exception has occurred: " + e.getMessage());
             return false;
         }
     }

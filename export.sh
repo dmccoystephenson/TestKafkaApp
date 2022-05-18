@@ -1,0 +1,1 @@
+export KAFKA_HOST=localhost

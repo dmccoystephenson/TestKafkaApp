@@ -11,6 +11,7 @@ import java.util.Scanner;
 import dms.testkafkaapp.commands.HelpCommand;
 import dms.testkafkaapp.commands.InfoCommand;
 import dms.testkafkaapp.commands.QuitCommand;
+import dms.testkafkaapp.commands.SendCommand;
 import dms.testkafkaapp.commands.SendTestValueCommand;
 import dms.testkafkaapp.misc.CommandSenderImpl;
 import dms.testkafkaapp.utils.Logger;
@@ -169,6 +170,7 @@ public class TestKafkaApp extends PonderApplication {
         commands.add(new InfoCommand());
         commands.add(new QuitCommand());
         commands.add(new SendTestValueCommand());
+        commands.add(new SendCommand());
         setCommandService(new CommandService((commands)));
     }
 

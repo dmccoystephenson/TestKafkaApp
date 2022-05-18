@@ -3,7 +3,6 @@ package dms.testkafkaapp.commands;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import dms.testkafkaapp.Constants;
 import dms.testkafkaapp.exceptions.KafkaClusterNotFoundException;
 import dms.testkafkaapp.exceptions.KafkaHostNotDefinedException;
 import dms.testkafkaapp.factories.MyProducerFactory;
@@ -15,15 +14,25 @@ import preponderous.ponder.system.abs.CommandSender;
 /**
  * @author Daniel McCoy Stephenson
  */
-public class SendTestValueCommand extends ApplicationCommand {
+public class SendCommand extends ApplicationCommand {
     
-    public SendTestValueCommand() {
-        super(new ArrayList<>(Arrays.asList("sendtestvalue")), new ArrayList<>(Arrays.asList("tka.sendtestvalue")));
+    public SendCommand() {
+        super(new ArrayList<>(Arrays.asList("send")), new ArrayList<>(Arrays.asList("tka.send")));
     }
 
     @Override
     public boolean execute(CommandSender sender) {
-        Logger.getInstance().print("Using topic: " + Constants.TOPIC_NAME);
+        sender.sendMessage("Usage: send <topic> <message>");
+        return false;
+    }
+
+    @Override
+    public boolean execute(CommandSender sender, String[] args) {
+        if (args.length < 2) {
+            return execute(sender);
+        }
+        String topic = args[0];
+        String message= args[1];
         MyProducer producer;
         try {
             producer = MyProducerFactory.getInstance().createProducer();
@@ -36,14 +45,9 @@ public class SendTestValueCommand extends ApplicationCommand {
             sender.sendMessage("You need to have a kafka cluster running in order for this command to work.");
             return false;
         }
-        sendMessage(producer, Constants.TOPIC_NAME, "testvalue");
+        sendMessage(producer, topic, message);
         producer.getProducer().close();
         return true;
-    }
-
-    @Override
-    public boolean execute(CommandSender sender, String[] args) {
-        return execute(sender);
     }
 
     private boolean sendMessage(MyProducer producer, String topicName, String message) {

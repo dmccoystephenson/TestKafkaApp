@@ -70,7 +70,7 @@ public class TestKafkaApp extends PonderApplication {
             if (indexOfFirstSpace != -1) {
                 // spaces found
                 label = line.substring(0, indexOfFirstSpace);
-                args = line.substring(indexOfFirstSpace).split(" ");
+                args = line.substring(indexOfFirstSpace + 1).split(" ");
             }
             else {
                 // no spaces found
@@ -128,9 +128,9 @@ public class TestKafkaApp extends PonderApplication {
     public boolean onCommand(CommandSender sender, String label, String[] args) {
         Logger.getInstance().debug("Interpreting command " + label);
 
-        // drop first argument
-        ArgumentParser argumentParser = new ArgumentParser();
-        args = argumentParser.dropFirstArgument(args);
+        // // drop first argument
+        // ArgumentParser argumentParser = new ArgumentParser();
+        // args = argumentParser.dropFirstArgument(args);
 
         return getCommandService().interpretAndExecuteCommand(sender, label, args); // TODO: make command service drop first argument
     }

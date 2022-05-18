@@ -1,6 +1,8 @@
 package dms.testkafkaapp.objects;
 
 import java.util.Properties;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
@@ -31,7 +33,14 @@ public class MyProducer {
         try {
             futureRecordMetadata.get();
             return true;
-        } catch(Exception e) {
+        } catch(CancellationException e) {
+            Logger.getInstance().error("A cancellation exception has occurred.");
+            return false;
+        } catch(ExecutionException e) {
+            Logger.getInstance().error("An execution exception has occurred.");
+            return false;
+        } catch(InterruptedException e) {
+            Logger.getInstance().error("An interrupted exception has occurred.");
             return false;
         }
     }
